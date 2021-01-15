@@ -1,6 +1,7 @@
 
 package controles;
-
+import dao.LivrosDao;
+import dao.DataSource;
 import excecoes.ValidacaoDeCadastro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,17 +13,14 @@ import telas.JanelaCadastroLivro;
 
 public class ControleCadastroLivro extends ControleCadastro{
    JanelaCadastroLivro jlivro;
-   Livro li;
-   public static ArrayList <Livro> livroDB = new ArrayList<>(); 
+   Livro livro;
+   LivrosDao livroDao;
+   
    
    
    public ControleCadastroLivro(){
-      
 		jlivro = new JanelaCadastroLivro();
-                validacaoDeDados();
-                
-	
-       
+                validacaoDeDados(); 
        
    }
    
@@ -30,26 +28,21 @@ public class ControleCadastroLivro extends ControleCadastro{
  @Override
  public  void validacaoDeDados (){ 
 		
-     
-     
-    
+
 		jlivro.btnCadastrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-			
-                       
                         Livro livro = new Livro();
-                        
+                        LivrosDao livroDao = new LivrosDao();
+
                    try{                               
-			livro.setCodigo(ValidacaoDeCadastro.validaNotNull(jlivro.txtCodigo.getText()));
+			//livro.setCodigo(ValidacaoDeCadastro.validaNotNull(jlivro.txtCodigo.getText()));
 			livro.setTitulo(ValidacaoDeCadastro.validaNotNull(jlivro.txtTitulo.getText()));
                         livro.setAutor(ValidacaoDeCadastro.validaNotNull(jlivro.txtAutor.getText()));
 			livro.setEdicao(ValidacaoDeCadastro.validaNotNull(jlivro.txtEdicao.getText()));
                         livro.setAno(ValidacaoDeCadastro.validaNotNull(jlivro.txtAno.getText()));
-                        
                         livro.setDispo(ValidacaoDeCadastro.validaNotZero(jlivro.txtDispo.getText()));
-			livroDB.add(livro);
-                        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");	
+                        livroDao.add_livro(livro);     
                    }
                    catch(IllegalArgumentException e){
                        JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos");
