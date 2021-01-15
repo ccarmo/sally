@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import sally.*;
 import telas.*;
+import dao.DataSource;
+import dao.LivrosDao;
 
 
 public class ControleInfoLivro {
@@ -19,25 +21,21 @@ public class ControleInfoLivro {
 		initEvents();
 		chargeScreen();
 		gridLivro.grid.clearSelection(); 
+		
 	}
 	
 	private void initEvents(){
 		gridLivro.btnEditar.addActionListener(new ActionListener() { 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int posicao = gridLivro.grid.getSelectedRow();
-				Livro li = ControleCadastroLivro.livroDB.get(posicao); 
-				
-				
-				formEdicao = new ControleEdicaoLivro(li); 
-				formEdicao.form.setVisible(true);
-				
-					ControleCadastroLivro.livroDB.set(posicao, li);
-					refreshGrid(ControleCadastroLivro.livroDB);
-				
-				
+			  int posicao = gridLivro.grid.getSelectedRow();
+			  Livro li = ControleCadastroLivro.livroDB.get(posicao); 
+			  formEdicao = new ControleEdicaoLivro(li); 
+			  formEdicao.form.setVisible(true);
+			  ControleCadastroLivro.livroDB.set(posicao, li);
+			  refreshGrid(ControleCadastroLivro.livroDB);
 			}
-		});
+	});
 		
 		gridLivro.btnExcluir.addActionListener(new ActionListener() { 
 			@Override
@@ -51,25 +49,21 @@ public class ControleInfoLivro {
 	}
 	
 	public void chargeScreen(){ 
-		
-		refreshGrid(ControleCadastroLivro.livroDB);
+		LivrosDao livrosDao = new LivrosDao();
+		ArrayList<Livro> listarLivro = new ArrayList<Livro>();
+		listarLivro = livrosDao.buscarLivro();
+		refreshGrid(listarLivro);
 	}
 	
 	public void refreshGrid(ArrayList<Livro> lista){ 
-		
-		
 		int x = gridLivro.dtm.getRowCount();
 		while (x > 0) {
 			x--;
 			gridLivro.dtm.removeRow(x);
 		}
-
-		for (Livro li : lista) {
-                   
-			gridLivro.dtm.addRow(new Object[] { li.getCodigo(), li.getTitulo(), li.getAutor(), li.getEdicao(), li.getAno(), li.getDispo() });
-                        
-                    
-		}
+        for (Livro li : lista) {
+            gridLivro.dtm.addRow(new Object[] { li.getCodigo(), li.getTitulo(), li.getAutor(), li.getEdicao(), li.getAno(), li.getDispo() });
+        }
 		if (gridLivro.dtm.getRowCount() > 0) {
 			gridLivro.grid.setRowSelectionInterval(0, 0);
 		}
