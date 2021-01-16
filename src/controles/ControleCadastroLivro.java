@@ -20,9 +20,8 @@ public class ControleCadastroLivro extends ControleCadastro{
    
    public ControleCadastroLivro(){
 		jlivro = new JanelaCadastroLivro();
-                validacaoDeDados(); 
-       
-   }
+        validacaoDeDados(); 
+    }
    
  
  @Override
@@ -32,40 +31,31 @@ public class ControleCadastroLivro extends ControleCadastro{
 		jlivro.btnCadastrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-                        Livro livro = new Livro();
-                        LivrosDao livroDao = new LivrosDao();
+            Livro livro = new Livro();
+            LivrosDao livroDao = new LivrosDao();
 
-                   try{                               
+           try{                               
 			//livro.setCodigo(ValidacaoDeCadastro.validaNotNull(jlivro.txtCodigo.getText()));
-			livro.setTitulo(ValidacaoDeCadastro.validaNotNull(jlivro.txtTitulo.getText()));
-                        livro.setAutor(ValidacaoDeCadastro.validaNotNull(jlivro.txtAutor.getText()));
-			livro.setEdicao(ValidacaoDeCadastro.validaNotNull(jlivro.txtEdicao.getText()));
-                        livro.setAno(ValidacaoDeCadastro.validaNotNull(jlivro.txtAno.getText()));
-                        livro.setDispo(ValidacaoDeCadastro.validaNotZero(jlivro.txtDispo.getText()));
-                        livroDao.add_livro(livro);     
-                   }
-                   catch(IllegalArgumentException e){
-                       JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos");
-                       jlivro.setVisible(false);
-                   }
-                   catch(Exception e){
-                       JOptionPane.showMessageDialog(null, "Não pode preencher como 0 a disponibilidade do livro");
-                       jlivro.setVisible(false);
-                   }
+			 livro.setTitulo(ValidacaoDeCadastro.validaNotNull(jlivro.txtTitulo.getText()));
+             livro.setAutor(ValidacaoDeCadastro.validaNotNull(jlivro.txtAutor.getText()));
+			 livro.setEdicao(ValidacaoDeCadastro.validaNotNull(jlivro.txtEdicao.getText()));
+             livro.setAno(ValidacaoDeCadastro.validaNotNull(jlivro.txtAno.getText()));
+             livro.setDispo(ValidacaoDeCadastro.validaNotZero(jlivro.txtDispo.getText()));
+             livroDao.add_livro(livro);  
+           } catch(IllegalArgumentException e){
+              JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos");
+              jlivro.setVisible(false);
+           } catch(Exception e){
+              JOptionPane.showMessageDialog(null, "Não pode preencher como 0 a disponibilidade do livro");
+              jlivro.setVisible(false);
+           }
                     
-                   
-                        
-		     
-	             jlivro.setVisible(false);
-        
-	
-
-                        }               
+            jlivro.setVisible(false);
+           }               
     });     
                 
 
- 
-		
+
 			
                         
                                  
