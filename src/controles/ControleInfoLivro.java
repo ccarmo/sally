@@ -15,12 +15,16 @@ public class ControleInfoLivro {
     JanelaInfoLivro gridLivro;
         
 	ControleEdicaoLivro formEdicao;
+
+
 	
 	public ControleInfoLivro() {
 		gridLivro = new JanelaInfoLivro();
 		initEvents();
-		chargeScreen();
-		gridLivro.grid.clearSelection(); 
+		chargeScreen(); 
+		
+		gridLivro.grid.clearSelection();
+
 		
 	}
 	
@@ -29,11 +33,14 @@ public class ControleInfoLivro {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			  int posicao = gridLivro.grid.getSelectedRow();
-			  Livro li = ControleCadastroLivro.livroDB.get(posicao); 
-			  formEdicao = new ControleEdicaoLivro(li); 
-			  formEdicao.form.setVisible(true);
-			  ControleCadastroLivro.livroDB.set(posicao, li);
-			  refreshGrid(ControleCadastroLivro.livroDB);
+			  LivrosDao livroDao = new LivrosDao();
+			  Livro li = livroDao.pesquisarLivro(posicao+1); 
+			  formEdicao = new ControleEdicaoLivro(li);
+        	  formEdicao.form.setVisible(true);
+			  ArrayList<Livro> listaAtualizada = new ArrayList<Livro>();
+			  listaAtualizada = livroDao.buscarLivro();
+			  refreshGrid(listaAtualizada);
+
 			}
 	});
 		
@@ -62,7 +69,7 @@ public class ControleInfoLivro {
 			gridLivro.dtm.removeRow(x);
 		}
         for (Livro li : lista) {
-            gridLivro.dtm.addRow(new Object[] { li.getCodigo(), li.getTitulo(), li.getAutor(), li.getEdicao(), li.getAno(), li.getDispo() });
+            gridLivro.dtm.addRow(new Object[] { li.getCodigo(), li.getTitulo(), li.getAutor(), li.getAno(), li.getEdicao(), li.getDispo() });
         }
 		if (gridLivro.dtm.getRowCount() > 0) {
 			gridLivro.grid.setRowSelectionInterval(0, 0);
