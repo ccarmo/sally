@@ -109,6 +109,19 @@ public class LivrosDao {
         return livroAchado;
     }
        
-          
+    public void excluirLivro(int codigo){
+        String sqlLivro_excluir = "DELETE FROM livros WHERE lv_codigo="+codigo;
+        Livro livro_excluido = new Livro();
+        try{
+            DataSource ds = new DataSource();
+            conexao = ds.getConnection();
+            PreparedStatement stm = conexao.prepareStatement(sqlLivro_excluir);
+            stm.execute();
+            JOptionPane.showMessageDialog(null, "Livro excluido");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+        }
+
+    }      
 }
       

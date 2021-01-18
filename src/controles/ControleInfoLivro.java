@@ -49,7 +49,9 @@ public class ControleInfoLivro {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				int posicao = gridLivro.grid.getSelectedRow();
-				ControleCadastroLivro.livroDB.remove(posicao);
+				int codigo = (int) gridLivro.grid.getValueAt(posicao, 0);
+				LivrosDao livroDao = new LivrosDao();
+				livroDao.excluirLivro(codigo);
 				((DefaultTableModel) gridLivro.grid.getModel()).removeRow(posicao); 
 			}
 		});
