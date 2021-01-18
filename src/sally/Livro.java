@@ -6,25 +6,23 @@ public class Livro extends DadosPrincipais {
    
     public Livro(){}
     
-    public Livro(String codigo, String titulo, String autor,String edicao, String ano, String Dispo){
-		this.Codigo = codigo ;
+    public Livro(int codigo, String titulo, String autor,String edicao, String ano, String Dispo){
+		this.codigo = codigo ;
 		this.titulo = titulo;
-                this.autor = autor;
-                this.edicao = edicao;
-                this.ano = ano;
-                this.Dispo = Dispo;
+        this.autor = autor;
+        this.edicao = edicao;
+        this.ano = ano;
+        this.Dispo = Dispo;
                 
 	}
 	
-      
-        
-        public String getCodigo() {
-		return Codigo;
+    public int getCodigo() {
+		return codigo;
 	}
         
         
-	public void setCodigo(String codigo){
-		this.Codigo = codigo;
+	public void setCodigo(int codigo){
+		this.codigo = codigo;
 	}
 	
 	public String getTitulo() {
@@ -47,12 +45,12 @@ public class Livro extends DadosPrincipais {
 	public void setEdicao(String edicao) {
 		this.edicao = edicao;
 	}
-        
-        
-        public String getAno() {
+		
+	public String getAno() {
 		return ano;
 	}
-        public void setAno(String ano) {
+	
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
        
@@ -66,7 +64,7 @@ public class Livro extends DadosPrincipais {
         
         
         @Override
-	public boolean equals(Object t) {
+	    public boolean equals(Object t) {
 		Livro li = new Livro();
 		li = (Livro) t;
 		return (this.getDispo().equals(li.getDispo()));

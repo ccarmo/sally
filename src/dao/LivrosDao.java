@@ -41,13 +41,15 @@ public class LivrosDao {
           
         while(res.next()) { 
           Livro buscarlivro = new Livro();
+          buscarlivro.setCodigo(res.getInt(1));
           buscarlivro.setAno(res.getString("lv_ano"));
           buscarlivro.setAutor(res.getString("lv_autor"));
-          buscarlivro.setCodigo(res.getString("lv_codigo"));
           buscarlivro.setDispo(res.getString("lv_qtd"));
           buscarlivro.setEdicao(res.getString("lv_edicao"));
           buscarlivro.setTitulo(res.getString("lv_titulo"));
           listaLivro.add(buscarlivro);
+         
+          
          } 
         
         }
@@ -91,7 +93,7 @@ public class LivrosDao {
           
           
           while(res_stm.next()){
-          livroAchado.setCodigo(res_stm.getString("lv_codigo"));
+          livroAchado.setCodigo(res_stm.getInt("lv_codigo"));
           livroAchado.setAno(res_stm.getString("lv_ano"));
           livroAchado.setAutor(res_stm.getString("lv_autor"));
           livroAchado.setDispo(res_stm.getString("lv_qtd"));
@@ -105,8 +107,8 @@ public class LivrosDao {
         } 
         
         return livroAchado;
-		
-
+    }
+       
           
-        }
-     }    
+}
+      

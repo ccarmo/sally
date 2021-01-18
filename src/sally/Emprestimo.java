@@ -16,7 +16,7 @@ public class Emprestimo extends DadosPrincipais  {
     public Emprestimo(String NM, String nome, String Codigo, String titulo, String DTEmprestimo, String DTDevolucao, String posicaolivro){
         this.NumeroMatricula = NM;
         this.nome = nome;
-        this.Codigo = Codigo;
+        this.codigo = codigo;
         this.titulo = titulo;
         this.DataEmprestimo = DTEmprestimo;
         this.DataDevolucao = DTDevolucao;

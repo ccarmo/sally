@@ -29,7 +29,7 @@ public class ControleEdicaoLivro extends ControleCadastro {
 	}
 	
 	private void chargeScreen(){ 
-		form.txtCodigo.setText(li.getCodigo());
+		form.txtCodigo.setText(String.valueOf(li.getCodigo()));
 		form.txtTitulo.setText(li.getTitulo());
 		form.txtAutor.setText(li.getAutor());
         form.txtEdicao.setText(li.getEdicao());
@@ -49,7 +49,7 @@ public class ControleEdicaoLivro extends ControleCadastro {
                  ValidacaoDeCadastro.validaNotNull(form.txtEdicao.getText());
                  ValidacaoDeCadastro.validaNotNull(form.txtAno.getText());
 				 ValidacaoDeCadastro.validaNotNull(form.txtDispo.getText());
-				 int codigo = Integer.parseInt(li.getCodigo());
+				 int codigo = (li.getCodigo());
                  initEvents(codigo);
                 } catch(IllegalArgumentException e){
                     JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos");

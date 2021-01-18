@@ -34,17 +34,15 @@ public class ControleInfoLivro {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			  int posicao = gridLivro.grid.getSelectedRow();
-			  String codigo = (String) gridLivro.grid.getValueAt(posicao, 0);
-			  int codigo_convertido = Integer.parseInt(codigo);
+			  int codigo = (int) gridLivro.grid.getValueAt(posicao, 0);
 			  LivrosDao livroDao = new LivrosDao();
-			  Livro li = livroDao.pesquisarLivro(codigo_convertido); 
+			  Livro li = livroDao.pesquisarLivro(codigo); 
 			  formEdicao = new ControleEdicaoLivro(li);
         	  formEdicao.form.setVisible(true);
 			  ArrayList<Livro> listaAtualizada = new ArrayList<Livro>();
 			  listaAtualizada = livroDao.buscarLivro();
 			  refreshGrid(listaAtualizada);
-
-			}
+            }
 	});
 		
 		gridLivro.btnExcluir.addActionListener(new ActionListener() { 
