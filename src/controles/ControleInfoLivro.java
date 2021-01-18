@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import sally.*;
 import telas.*;
 import dao.DataSource;
@@ -22,7 +23,7 @@ public class ControleInfoLivro {
 		gridLivro = new JanelaInfoLivro();
 		initEvents();
 		chargeScreen(); 
-		
+
 		gridLivro.grid.clearSelection();
 
 		
@@ -33,8 +34,10 @@ public class ControleInfoLivro {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			  int posicao = gridLivro.grid.getSelectedRow();
+			  String codigo = (String) gridLivro.grid.getValueAt(posicao, 0);
+			  int codigo_convertido = Integer.parseInt(codigo);
 			  LivrosDao livroDao = new LivrosDao();
-			  Livro li = livroDao.pesquisarLivro(posicao+1); 
+			  Livro li = livroDao.pesquisarLivro(codigo_convertido); 
 			  formEdicao = new ControleEdicaoLivro(li);
         	  formEdicao.form.setVisible(true);
 			  ArrayList<Livro> listaAtualizada = new ArrayList<Livro>();
