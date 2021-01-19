@@ -1,28 +1,23 @@
 package sally;
 
 public class Cliente extends DadosPrincipais  {
-        
 	
-        public Cliente(){}
-        
-	public Cliente(String nome, String endereco,  String email,String telefone, String CPF, String DTNasci, String NM, String ST)   {
+	public Cliente(){}
+    public Cliente(String nome, String endereco,  String email,String telefone, String CPF, String DTNasci, String NM, String ST)   {
 		this.nome = nome ;
 		this.endereco = endereco;
-                this.email = email;
-                this.telefone = telefone;
-                this.CPF = CPF;
-                this.DataNascimento = DTNasci;
-                this.NumeroMatricula = NM;
-                this.StatusUsuario = ST;
+        this.email = email;
+        this.telefone = telefone;
+        this.CPF = CPF;
+        this.DataNascimento = DTNasci;
+        this.NumeroMatricula = NM;
+        this.StatusUsuario = ST;
 	}
 	
-      
-        
-        public String getNome() {
+    public String getNome() {
 		return nome;
 	}
-        
-        
+       
 	public void setNome(String nome){
 		this.nome = nome;
 	}
@@ -36,10 +31,12 @@ public class Cliente extends DadosPrincipais  {
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-        public String getTelefone() {
+
+    public String getTelefone() {
 		return telefone;
 	}
         
@@ -49,10 +46,11 @@ public class Cliente extends DadosPrincipais  {
 	}
         
         
-        public String getCPF() {
+    public String getCPF() {
 		return CPF;
 	}
-        public void setCPF(String CPF) {
+
+    public void setCPF(String CPF) {
 		this.CPF = CPF;
 	}
        
@@ -60,27 +58,27 @@ public class Cliente extends DadosPrincipais  {
 		return DataNascimento;
 	}
         
-        public void setDT(String DTNasci) {
+    public void setDT(String DTNasci) {
 		this.DataNascimento = DTNasci;
 	}
         
-        public String getNM() {
+    public String getNM() {
 		return NumeroMatricula;
 	}
         
-        public void setNM(String NM) {
+    public void setNM(String NM) {
 		this.NumeroMatricula = NM;
 	}
         
-        public String getST() {
+    public String getST() {
 		return StatusUsuario;
 	}
         
-        public void setST(String ST) {
+    public void setST(String ST) {
 		this.StatusUsuario = ST;
 	}
 
-        @Override
+    @Override
 	public boolean equals(Object o) {
 		Cliente c = new Cliente();
 		c = (Cliente) o;

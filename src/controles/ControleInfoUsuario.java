@@ -1,30 +1,23 @@
 
 package controles;
 
-
-
 import excecoes.VerificaMulta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.table.DefaultTableModel;
-
 import sally.*;
 import telas.*;
 
 public class ControleInfoUsuario {
- 
 	
-	JanelaInfoUsuario gridCliente;
-        
+	JanelaInfoUsuario gridCliente;        
 	ControleEdicaoUsuario formEdicao;
 	
 	public ControleInfoUsuario() {
 		gridCliente = new JanelaInfoUsuario();
 		initEvents();
-		chargeScreen();
-               
+		chargeScreen();             
 		gridCliente.grid.clearSelection(); 
 	}
 	
@@ -34,15 +27,10 @@ public class ControleInfoUsuario {
 			public void actionPerformed(ActionEvent arg0) {
 				int posicao = gridCliente.grid.getSelectedRow();
 				Cliente c = ControleCadastroCliente.clienteDB.get(posicao); 
-				
 				formEdicao = new ControleEdicaoUsuario(c); 
 				formEdicao.form.setVisible(true);
-				
-				 
-			         ControleCadastroCliente.clienteDB.set(posicao, c);
-			         refreshGrid(ControleCadastroCliente.clienteDB);
-				
-				
+				ControleCadastroCliente.clienteDB.set(posicao, c);
+			    refreshGrid(ControleCadastroCliente.clienteDB);		
 			}
 		});
 		
@@ -58,13 +46,10 @@ public class ControleInfoUsuario {
 	}
 	
 	public void chargeScreen(){ 
-		
-		
 		refreshGrid(ControleCadastroCliente.clienteDB);
 	}
 	
 	public void refreshGrid(ArrayList<Cliente> lista){ 
-		
 		
 		int x = gridCliente.dtm.getRowCount();
 		while (x > 0) {
