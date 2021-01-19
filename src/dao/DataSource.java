@@ -9,9 +9,7 @@ public class DataSource {
     private String database;
     private String username;
     private String password;
-
     private Connection connection;
-
     public DataSource(){
       try {
          hostname = "localhost";
@@ -19,23 +17,13 @@ public class DataSource {
          database = "sally";
          username = "postgres";
          password = "123456";
-         
          String url = "jdbc:postgresql://"+hostname+":"+port+"/"+database;
-         
          DriverManager.registerDriver(new org.postgresql.Driver());
          connection = DriverManager.getConnection(url, username, password);
-
-        System.out.println("Conexão efetuada");
-        
-        
-        
-        }
-
-      catch(SQLException ex) {
+         System.out.println("Conexão efetuada");
+       } catch(SQLException ex) {
           System.err.println("ERRO na conexão"+ex.getMessage());
-      }
-
-      catch(Exception ex){
+       } catch(Exception ex){
           System.err.println("Erro global"+ex.getMessage());
       }
     }
@@ -47,10 +35,9 @@ public class DataSource {
     public void closeDataSource(){
        try{
            connection.close();
-       }
-       catch(Exception ex) {
+           System.out.println("Conexão fechada");
+       } catch(Exception ex) {
            System.err.println("Erro ao desconectar"+ex.getMessage());
        }
-}
-
+    }
 }

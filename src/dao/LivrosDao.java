@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
 
 public class LivrosDao {
     private Connection conexao = null;
-    public LivrosDao() {
-    }     
+    
+    public LivrosDao() {}     
     public void add_livro(Livro addlivro) {
-      String sql = "INSERT INTO livros (lv_titulo, lv_ano, lv_qtd, lv_edicao, lv_autor) VALUES (?,?,?,?,?)";
+      DataSource ds = new DataSource();    
       try {
-        DataSource ds = new DataSource();
+        String sql = "INSERT INTO livros (lv_titulo, lv_ano, lv_qtd, lv_edicao, lv_autor) VALUES (?,?,?,?,?)";
         conexao = ds.getConnection();
         PreparedStatement stm = conexao.prepareStatement(sql);
         stm.setString(1, addlivro.getTitulo());
@@ -27,18 +27,20 @@ public class LivrosDao {
         JOptionPane.showMessageDialog(null, "Livro cadastrado");
       } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
-      } 
-  }
-     public ArrayList<Livro> buscarLivro() {
+      } finally {
+        ds.closeDataSource();
+      }
+    
+    }
+
+    public ArrayList<Livro> buscarLivro() {
+      ArrayList<Livro> listaLivro = new ArrayList<Livro>();
+      DataSource ds = new DataSource();
+      try {
         String sqlLivro = "SELECT * FROM livros ORDER by lv_codigo";
-        ArrayList<Livro> listaLivro = new ArrayList<Livro>();
-        
-        try {
-          DataSource ds = new DataSource();
-          conexao = ds.getConnection();
-          PreparedStatement stm = conexao.prepareStatement(sqlLivro);
-          ResultSet res = stm.executeQuery();
-          
+        conexao = ds.getConnection();
+        PreparedStatement stm = conexao.prepareStatement(sqlLivro);
+        ResultSet res = stm.executeQuery();
         while(res.next()) { 
           Livro buscarlivro = new Livro();
           buscarlivro.setCodigo(res.getInt(1));
@@ -48,25 +50,21 @@ public class LivrosDao {
           buscarlivro.setEdicao(res.getString("lv_edicao"));
           buscarlivro.setTitulo(res.getString("lv_titulo"));
           listaLivro.add(buscarlivro);
-         
-          
-         } 
-        
-        }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+        } 
+        } catch (SQLException ex) {
+          JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+        } finally {
+          ds.closeDataSource();
         }
         return listaLivro;
-    }
+      }
 
       public void editarLivro(int codigo, Livro livro){
-         
-         String sqlLivro_altera = "UPDATE livros " +  
-                                  "SET lv_ano = ?, lv_autor = ?, lv_qtd = ?, lv_edicao = ?, lv_titulo = ?" +
-                                  "WHERE lv_codigo ="+codigo;
-
+         DataSource ds = new DataSource();
          try {
-            DataSource ds = new DataSource();
+            String sqlLivro_altera = "UPDATE livros " +  
+                                    "SET lv_ano = ?, lv_autor = ?, lv_qtd = ?, lv_edicao = ?, lv_titulo = ?" +
+                                    "WHERE lv_codigo ="+codigo;
             conexao = ds.getConnection();
             PreparedStatement stm_altera = conexao.prepareStatement(sqlLivro_altera);
             stm_altera.setString(1, livro.getAno());
@@ -78,48 +76,50 @@ public class LivrosDao {
             JOptionPane.showMessageDialog(null, "Livro atualizado");
          } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
-         } 
+         } finally {
+            ds.closeDataSource();
+         }
             
      }
 
-     public Livro pesquisarLivro(int codigo){
-        String sqlLivro_pesquisa = "SELECT * FROM livros WHERE lv_codigo = " + codigo;
+     public Livro pesquisarLivro(int codigo){ 
         Livro livroAchado = new Livro();
+        DataSource ds = new DataSource();
         try{
-          DataSource ds = new DataSource();
+          
+          String sqlLivro_pesquisa = "SELECT * FROM livros WHERE lv_codigo = " + codigo;
           conexao = ds.getConnection();
           PreparedStatement stm = conexao.prepareStatement(sqlLivro_pesquisa);
-          ResultSet res_stm = stm.executeQuery();
-          
-          
+          ResultSet res_stm = stm.executeQuery();  
           while(res_stm.next()){
-          livroAchado.setCodigo(res_stm.getInt("lv_codigo"));
-          livroAchado.setAno(res_stm.getString("lv_ano"));
-          livroAchado.setAutor(res_stm.getString("lv_autor"));
-          livroAchado.setDispo(res_stm.getString("lv_qtd"));
-          livroAchado.setEdicao(res_stm.getString("lv_edicao"));
-          livroAchado.setTitulo(res_stm.getString("lv_titulo"));
-          }
-          
-          
+           livroAchado.setCodigo(res_stm.getInt("lv_codigo"));
+           livroAchado.setAno(res_stm.getString("lv_ano"));
+           livroAchado.setAutor(res_stm.getString("lv_autor"));
+           livroAchado.setDispo(res_stm.getString("lv_qtd"));
+           livroAchado.setEdicao(res_stm.getString("lv_edicao"));
+           livroAchado.setTitulo(res_stm.getString("lv_titulo"));
+          }   
         } catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
-        } 
-        
+          JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+        } finally {
+          ds.closeDataSource(); 
+        }
         return livroAchado;
     }
        
     public void excluirLivro(int codigo){
         String sqlLivro_excluir = "DELETE FROM livros WHERE lv_codigo="+codigo;
         Livro livro_excluido = new Livro();
+        DataSource ds = new DataSource();
         try{
-            DataSource ds = new DataSource();
             conexao = ds.getConnection();
             PreparedStatement stm = conexao.prepareStatement(sqlLivro_excluir);
             stm.execute();
             JOptionPane.showMessageDialog(null, "Livro excluido");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+        } finally {
+          ds.closeDataSource();
         }
 
     }      
