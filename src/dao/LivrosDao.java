@@ -33,7 +33,7 @@ public class LivrosDao {
     
     }
 
-    public ArrayList<Livro> buscarLivro() {
+    public ArrayList<Livro> exibirLivros() {
       ArrayList<Livro> listaLivro = new ArrayList<Livro>();
       DataSource ds = new DataSource();
       try {

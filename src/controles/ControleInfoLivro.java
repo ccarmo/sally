@@ -40,7 +40,7 @@ public class ControleInfoLivro {
 			  formEdicao = new ControleEdicaoLivro(li);
         	  formEdicao.form.setVisible(true);
 			  ArrayList<Livro> listaAtualizada = new ArrayList<Livro>();
-			  listaAtualizada = livroDao.buscarLivro();
+			  listaAtualizada = livroDao.exibirLivros();
 			  refreshGrid(listaAtualizada);
             }
 	});
@@ -61,7 +61,7 @@ public class ControleInfoLivro {
 	public void chargeScreen(){ 
 		LivrosDao livrosDao = new LivrosDao();
 		ArrayList<Livro> listarLivro = new ArrayList<Livro>();
-		listarLivro = livrosDao.buscarLivro();
+		listarLivro = livrosDao.exibirLivros();
 		refreshGrid(listarLivro);
 	}
 	

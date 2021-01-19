@@ -12,17 +12,13 @@ import telas.*;
 
 
 public class ControleEdicaoLivro extends ControleCadastro {
-    
-	
+    	
 	JanelaEdicaoLivro form;
 	Livro li;
-	
 	
 	public ControleEdicaoLivro(Livro livro) {
 	    li = new Livro();
 		li = livro;
-		
-		
 		form = new JanelaEdicaoLivro();
 		chargeScreen(); 
 		validacaoDeDados();
@@ -42,8 +38,7 @@ public class ControleEdicaoLivro extends ControleCadastro {
 		form.btnSalvar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-			   try{
-				
+			   try{		
                  ValidacaoDeCadastro.validaNotNull(form.txtTitulo.getText());
                  ValidacaoDeCadastro.validaNotNull(form.txtAutor.getText());
                  ValidacaoDeCadastro.validaNotNull(form.txtEdicao.getText());
