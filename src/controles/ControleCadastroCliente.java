@@ -38,7 +38,7 @@ public class ControleCadastroCliente extends ControleCadastro{
 			cliente.setTelefone(ValidacaoDeCadastro.validaNotNull(jcliente.txtTel.getText()));
                         cliente.setCPF(ValidacaoDeCadastro.validaNotNull(jcliente.txtCPF.getText()));
                         cliente.setDT(ValidacaoDeCadastro.validaNotNull(jcliente.txtNasci.getText()));
-                        cliente.setNM(ValidacaoDeCadastro.validaNotNull(jcliente.txtNumeroMatricula.getText().toString()));
+                        cliente.setNM(ValidacaoDeCadastro.validaNotNull(jcliente.txtNumeroMatricula.getText()));
                         String AtivadoPadrao = "ATIVADO";
                         cliente.setST(AtivadoPadrao);
 			clientedao.add_cliente(cliente);

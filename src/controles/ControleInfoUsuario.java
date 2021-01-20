@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import sally.*;
 import telas.*;
+import dao.ClientesDao;
+import dao.DataSource;
 
 public class ControleInfoUsuario {
-	
 	JanelaInfoUsuario gridCliente;        
 	ControleEdicaoUsuario formEdicao;
-	
 	public ControleInfoUsuario() {
 		gridCliente = new JanelaInfoUsuario();
 		initEvents();
@@ -26,13 +26,16 @@ public class ControleInfoUsuario {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				int posicao = gridCliente.grid.getSelectedRow();
-				Cliente c = ControleCadastroCliente.clienteDB.get(posicao); 
-				formEdicao = new ControleEdicaoUsuario(c); 
+				String numeromatricula = (String) gridCliente.grid.getValueAt(posicao, 0);
+				ClientesDao clientedao = new ClientesDao();
+				Cliente cli = clientedao.pesquisarCliente(Integer.parseInt(numeromatricula));
+				formEdicao = new ControleEdicaoUsuario(cli);
 				formEdicao.form.setVisible(true);
-				ControleCadastroCliente.clienteDB.set(posicao, c);
-			    refreshGrid(ControleCadastroCliente.clienteDB);		
+				ArrayList<Cliente> listaAtualizada = new ArrayList<Cliente>();
+				listaAtualizada = clientedao.exibirClientes();
+				refreshGrid(listaAtualizada);		
 			}
-		});
+	    });
 		
 		gridCliente.btnExcluir.addActionListener(new ActionListener() { 
 			@Override
@@ -46,7 +49,10 @@ public class ControleInfoUsuario {
 	}
 	
 	public void chargeScreen(){ 
-		refreshGrid(ControleCadastroCliente.clienteDB);
+		ClientesDao clientedao = new ClientesDao();
+		ArrayList<Cliente> listarcliente = new ArrayList<Cliente>();
+		listarcliente = clientedao.exibirClientes();
+		refreshGrid(listarcliente);
 	}
 	
 	public void refreshGrid(ArrayList<Cliente> lista){ 
