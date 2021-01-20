@@ -40,8 +40,10 @@ public class ControleInfoUsuario {
 		gridCliente.btnExcluir.addActionListener(new ActionListener() { 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int posicao = gridCliente.grid.getSelectedRow();
-				ControleCadastroCliente.clienteDB.remove(posicao); 
+                int posicao = gridCliente.grid.getSelectedRow();
+				String numeromatricula = (String) gridCliente.grid.getValueAt(posicao, 0);
+				ClientesDao clientedao = new ClientesDao();
+				clientedao.excluirCliente(Integer.parseInt(numeromatricula));
 				((DefaultTableModel) gridCliente.grid.getModel()).removeRow(posicao); 
 			}
 		});

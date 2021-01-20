@@ -117,7 +117,22 @@ public class ClientesDao {
 
     }
 
-    public void excluirCliente(int codigo){}
+    public void excluirCliente(int numeromatricula){
+        String sqlCliente_excluir = "DELETE FROM usuarios WHERE user_id="+numeromatricula;
+        Cliente cliente_excluido = new Cliente();
+        DataSource ds = new DataSource();
+        try{
+            conexao = ds.getConnection();
+            PreparedStatement stm = conexao.prepareStatement(sqlCliente_excluir);
+            stm.execute();
+            JOptionPane.showMessageDialog(null, "Livro excluido");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+        } finally {
+          ds.closeDataSource();
+        }
+
+    }
 
 
 
