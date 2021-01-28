@@ -13,10 +13,11 @@ public class Emprestimo extends DadosPrincipais  {
     public Emprestimo(){
             }
     
-    public Emprestimo(String NM, String nome, String Codigo, String titulo, String DTEmprestimo, String DTDevolucao, String posicaolivro){
-        this.NumeroMatricula = NM;
+    public Emprestimo(String NM, String nome, int codigocliente, int codigolivro, String titulo, String DTEmprestimo, String DTDevolucao, String posicaolivro){
+		this.codigocliente = codigocliente;
+		this.NumeroMatricula = NM;
         this.nome = nome;
-        this.codigo = codigo;
+        this.codigolivro = codigolivro;
         this.titulo = titulo;
         this.DataEmprestimo = DTEmprestimo;
         this.DataDevolucao = DTDevolucao;
@@ -40,12 +41,19 @@ public class Emprestimo extends DadosPrincipais  {
 	public void setNome(String nome){
 		this.nome = nome;
 	}
-        
-        public String getCodigo() {
-		return Codigo;
+
+    public int getCodigocliente() {
+		return codigocliente;
 	}
-	public void setCodigo(String codigo) {
-		this.Codigo = codigo;
+	public void setCodigocliente(int codigocliente) {
+		this.codigocliente = codigocliente;
+	}	
+        
+    public int getCodigolivro() {
+		return codigolivro;
+	}
+	public void setCodigolivro(int codigolivro) {
+		this.codigolivro = codigolivro;
 	}
 	
 	public String getTitulo() {

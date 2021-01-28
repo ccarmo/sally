@@ -3,8 +3,9 @@ package sally;
 public class Cliente extends DadosPrincipais  {
 	
 	public Cliente(){}
-    public Cliente(String nome, String endereco,  String email,String telefone, String CPF, String DTNasci, String NM, String ST)   {
-		this.nome = nome ;
+    public Cliente(int codigo, String nome, String endereco,  String email,String telefone, String CPF, String DTNasci, String NM, String ST)   {
+		this.nome = nome;
+		this.codigo = codigo;
 		this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
@@ -12,6 +13,14 @@ public class Cliente extends DadosPrincipais  {
         this.DataNascimento = DTNasci;
         this.NumeroMatricula = NM;
         this.StatusUsuario = ST;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo){
+		this.codigo = codigo;
 	}
 	
     public String getNome() {

@@ -109,7 +109,6 @@ public class LivrosDao {
        
     public void excluirLivro(int codigo){
         String sqlLivro_excluir = "DELETE FROM livros WHERE lv_codigo="+codigo;
-        Livro livro_excluido = new Livro();
         DataSource ds = new DataSource();
         try{
             conexao = ds.getConnection();
@@ -122,6 +121,25 @@ public class LivrosDao {
           ds.closeDataSource();
         }
 
-    }      
+    }   
+    
+    public void atualizaQuantidade (int codigolivro, Livro livro){
+      DataSource ds = new DataSource();
+      try {
+         String sqlLivro_altera = "UPDATE livros " +  
+                                  "SET lv_qtd = ?" +
+                                  "WHERE lv_codigo ="+codigolivro;
+         conexao = ds.getConnection();
+         PreparedStatement stm_altera = conexao.prepareStatement(sqlLivro_altera);
+         String atualiza_quantidade = String.valueOf(Integer.parseInt(livro.getDispo()) - 1);
+         stm_altera.setString(1, atualiza_quantidade);
+         stm_altera.executeUpdate();
+         
+      } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+      } finally {
+         ds.closeDataSource();
+      }
+    }
 }
       
