@@ -13,10 +13,11 @@ public class Devolucao extends DadosPrincipais {
    public Devolucao(){
             }
     
-    public Devolucao(String NM, String nome, String titulo, String DTEmprestimo, String DTDevolucao){
+    public Devolucao(String NM, String nome, String titulo, int codigolivro, String DTEmprestimo, String DTDevolucao){
         this.NumeroMatricula = NM;
         this.nome = nome;
         this.titulo = titulo;
+        this.codigolivro = codigolivro;
         this.DataDevolucao = DTDevolucao;
         this.DataEmprestimo = DTEmprestimo;
     } 
@@ -42,6 +43,14 @@ public class Devolucao extends DadosPrincipais {
     
      public String getTitulo() {
 		return titulo;
+     }
+
+     public void setCodigoLivro(int codigolivro) {
+		this.codigolivro = codigolivro;
+     }
+    
+     public int getCodigoLivro() {
+		return codigolivro;
      }
         
      public void setTitulo(String titulo) {

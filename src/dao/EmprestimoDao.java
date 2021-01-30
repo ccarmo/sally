@@ -15,7 +15,7 @@ public class EmprestimoDao {
 
         DataSource ds = new DataSource();
         try{
-            String sqlEmprestimo = "INSERT INTO emprestimo (fk_user_id, fk_lv_codigo, empre_dataini, empre_datadevo) VALUES (?,?,?,?) ";     
+            String sqlEmprestimo = "INSERT INTO emprestimo (fk_user_no, fk_lv_codigo, empre_dataini, empre_datadevo) VALUES (?,?,?,?) ";     
             conexao = ds.getConnection();
             PreparedStatement stm = conexao.prepareStatement(sqlEmprestimo);
             stm.setInt(1, (int) addemprestimo.get(0));
