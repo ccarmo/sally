@@ -71,13 +71,6 @@ import java.text.ParseException;
                 
                 cliente = clientesdao.pesquisarCliente(numeromatricula);
                 
-                /*
-                try{
-                  
-
-                } catch (SQLException ex){
-                    
-                } */
                    
                 if (cliente.getST().equals("DESATIVADO")){
                     JOptionPane.showMessageDialog(null, "O cliente "+cliente.getNome()+" possui pendências");
