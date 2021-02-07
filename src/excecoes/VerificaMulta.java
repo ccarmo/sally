@@ -12,32 +12,25 @@ import java.util.ArrayList;
 
 public class VerificaMulta {
     static SimpleDateFormat FormatoData= new SimpleDateFormat("dd/MM/yyyy");
-     public static int aux;
-    public static final int GeraDiasInteiros(String NM, Date DataEmprestimo, Date DataDevolucaoReal){
-         
-        
-       
-                            
-                           Calendar DataEmprestimoCalendar = Calendar.getInstance();
-                           DataEmprestimoCalendar.setTime(DataEmprestimo);
-                           Calendar DataDevolucaoRealCalendar = Calendar.getInstance();
-                           DataDevolucaoRealCalendar.setTime(DataDevolucaoReal);
-                           long diferenca = DataDevolucaoRealCalendar.getTime().getTime() - DataEmprestimoCalendar.getTime().getTime();
-                           long ConverteMiliDias = TimeUnit.MILLISECONDS.toDays(diferenca);
-                           Integer dias = (int) (long) ConverteMiliDias;
-        
-        return dias;
+    public static int aux;
+    public static final int GeraDiasInteiros(Date DataEmprestimo, Date DataDevolucaoReal){ 
+      Calendar DataEmprestimoCalendar = Calendar.getInstance();
+      DataEmprestimoCalendar.setTime(DataEmprestimo);
+      Calendar DataDevolucaoRealCalendar = Calendar.getInstance();
+      DataDevolucaoRealCalendar.setTime(DataDevolucaoReal);
+      long diferenca = DataDevolucaoRealCalendar.getTime().getTime() - DataEmprestimoCalendar.getTime().getTime();
+      long ConverteMiliDias = TimeUnit.MILLISECONDS.toDays(diferenca);
+      Integer dias = (int) (long) ConverteMiliDias;
+      return dias;
     }
     
     public static final Calendar GeraDataMultaCalendar(int diasInteiros, Calendar DataDevolucaoRealCalendar){
-        
         Calendar DataMultaCalendar = Calendar.getInstance();
         DataMultaCalendar.set(Calendar.DAY_OF_MONTH, DataDevolucaoRealCalendar.get(Calendar.DAY_OF_MONTH)+ diasInteiros);
         return DataMultaCalendar;
     }
     
     public static final String GeraDataMulta(Calendar DataMultaCalendar){
-        
         String DataMulta = FormatoData.format(DataMultaCalendar.getTime());
         return DataMulta;
     }

@@ -119,7 +119,6 @@ public class ClientesDao {
 
     public void excluirCliente(int numeromatricula){
         String sqlCliente_excluir = "DELETE FROM usuarios WHERE user_id="+numeromatricula;
-        Cliente cliente_excluido = new Cliente();
         DataSource ds = new DataSource();
         try{
             conexao = ds.getConnection();
@@ -135,7 +134,23 @@ public class ClientesDao {
     }
 
 
-
+    public void alteraStatus(int numeromatricula, String status){
+      
+      DataSource ds = new DataSource();
+     
+      try{
+        String alteraSql = "UPDATE usuarios SET user_status = ? WHERE user_id ="+numeromatricula;
+        conexao = ds.getConnection();
+        PreparedStatement stm = conexao.prepareStatement(alteraSql);
+        stm.setString(1, status);
+        stm.executeUpdate();
+      } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());
+      } finally {
+        ds.closeDataSource();
+      }
+    }
+    
 
 
     

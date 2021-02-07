@@ -88,7 +88,7 @@ public class JanelaMulta extends JFrame {
 		pnlgrid.setBackground(new Color(192, 192, 192));
 		pnlgrid.setLayout(new BorderLayout());
 		
-		String[] colunas ={"N° Matrícula", "Nome", "Endereço", "Telefone", "Titulo", "Data Devolução", "Data Devolução Real", "Dias Multa", "Data Multa"};
+		String[] colunas ={"Código Multa, N° Matrícula", "Nome", "Endereço", "Telefone", "Titulo", "Data Devolução", "Data Devolução Real", "Dias Multa", "Data Multa"};
 		dtm = new DefaultTableModel(colunas, 0){ 
 			
 			@Override

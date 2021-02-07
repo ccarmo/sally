@@ -100,7 +100,7 @@ public class JanelaDevolucao extends JFrame {
 		pnlgrid.setBackground(new Color(192, 192, 192));
 		pnlgrid.setLayout(new BorderLayout());
 		
-		String[] colunas ={"Número de Matrícula", "Nome", "Codigo Livro", "Título", "Data de Empréstimo", "Data de Devolução"};
+		String[] colunas ={"Codigo Emprestimo", "Número de Matrícula", "Nome", "Codigo Livro", "Título", "Data de Empréstimo", "Data de Devolução"};
 		dtm = new DefaultTableModel(colunas, 0){ 
 			
 			@Override

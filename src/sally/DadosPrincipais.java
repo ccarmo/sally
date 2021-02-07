@@ -21,8 +21,10 @@ public abstract class DadosPrincipais {
         protected String NumeroMatricula;
         protected String StatusUsuario;
         public static int geraNumeroMatricula = 1;
+        protected int codigomulta;
         protected int codigocliente;
         protected int codigolivro;
+        protected int codigoemprestimo;
         protected int codigo;
         protected String titulo;
         protected String autor;

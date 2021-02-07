@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import sally.Emprestimo;;
 public class EmprestimoDao {
     private Connection conexao = null;
     public EmprestimoDao(){}
     int clientecodigo;
+
     public void add_emprestimo (ArrayList addemprestimo){
 
         DataSource ds = new DataSource();
@@ -29,6 +30,29 @@ public class EmprestimoDao {
         } finally {
             ds.closeDataSource();
         }
+    }
+
+
+    public Emprestimo pesquisarEmprestimo(int empre_no){
+          DataSource ds = new DataSource();
+          Emprestimo emprestimo = new Emprestimo();
+          try{
+            String pesquisaSql = "SELECT * FROM emprestimo WHERE empre_no = "+empre_no;
+            conexao = ds.getConnection();
+            PreparedStatement stm = conexao.prepareStatement(pesquisaSql);
+            ResultSet res_stm = stm.executeQuery(); 
+             while(res_stm.next()){
+                emprestimo.setCodigocliente(res_stm.getInt("fk_user_no"));
+                emprestimo.setCodigolivro(res_stm.getInt("fk_lv_codigo"));
+                emprestimo.setDTEmprestimo(res_stm.getString("empre_dataini"));
+                emprestimo.setDTDevolucao(res_stm.getString("empre_datadevo"));
+             }
+          } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro na conexão"+ex.getMessage());   
+          } finally {
+                ds.closeDataSource();
+          }
+          return emprestimo;
     }
 
     public int pesquisarCodigoCliente(int numeromatricula)  {

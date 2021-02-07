@@ -18,13 +18,14 @@ public class DevolucaoDao {
         
         try {
            conexao = ds.getConnection();
-           String sqlDevolucao = "SELECT usuarios.user_id, usuarios.user_pnome, emprestimo.fk_lv_codigo, livros.lv_titulo, emprestimo.empre_dataini, emprestimo.empre_datadevo FROM ((emprestimo INNER JOIN usuarios ON emprestimo.fk_user_no = usuarios.user_no) INNER JOIN livros ON emprestimo.fk_lv_codigo = livros.lv_codigo) ORDER BY empre_no";  
+           String sqlDevolucao = "SELECT emprestimo.empre_no, usuarios.user_id, usuarios.user_pnome, emprestimo.fk_lv_codigo, livros.lv_titulo, emprestimo.empre_dataini, emprestimo.empre_datadevo FROM ((emprestimo INNER JOIN usuarios ON emprestimo.fk_user_no = usuarios.user_no) INNER JOIN livros ON emprestimo.fk_lv_codigo = livros.lv_codigo) ORDER BY empre_no";  
                                   
            PreparedStatement stm = conexao.prepareStatement(sqlDevolucao); 
            ResultSet res_stm = stm.executeQuery();
             while (res_stm.next()){
                 Devolucao devolucao = new Devolucao();
                 String numeromatricula = String.valueOf(res_stm.getInt("user_id"));
+                devolucao.setCodigoEmprestimo(res_stm.getInt("empre_no"));
                 devolucao.setNM(numeromatricula);
                 devolucao.setNome(res_stm.getString("user_pnome"));
                 devolucao.setTitulo(res_stm.getString("lv_titulo"));

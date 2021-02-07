@@ -15,8 +15,10 @@ public class Multa extends DadosPrincipais {
     public Multa(){
             }
     
-    public Multa(String NM, String nome, String endereco, String telefone, String titulo, String DTEmprestimo, String DTDevolucao, String DTDevolucaoReal, String DiasMulta,String DTMulta){
-        this.NumeroMatricula = NM;
+    public Multa(int codigomulta, int codigoemprestimo, String NM, String nome, String endereco, String telefone, String titulo, String DTEmprestimo, String DTDevolucao, String DTDevolucaoReal, String DiasMulta,String DTMulta){
+        this codigomulta = codigomulta;
+		this.codigoemprestimo = codigoemprestimo;
+		this.NumeroMatricula = NM;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -27,8 +29,26 @@ public class Multa extends DadosPrincipais {
         this.DataMulta = DTMulta;
         this.DiasMulta = DiasMulta;
     }
+
+	public int getCodigoMulta() {
+		return codigomulta;
+	}
+        
+        
+	public void setCodigoMulta(int codigomulta){
+		this.codigomulta = codigomulta;
+	}
     
-        public String getNM() {
+	public int getCodigoEmprestimo() {
+		return codigoemprestimo;
+	}
+        
+        
+	public void setCodigoEmprestimo(int codigoemprestimo){
+		this.codigoemprestimo = codigoemprestimo;
+	}
+    
+	public String getNM() {
 		return NumeroMatricula;
 	}
         

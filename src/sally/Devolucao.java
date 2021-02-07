@@ -13,7 +13,8 @@ public class Devolucao extends DadosPrincipais {
    public Devolucao(){
             }
     
-    public Devolucao(String NM, String nome, String titulo, int codigolivro, String DTEmprestimo, String DTDevolucao){
+    public Devolucao(int codigoemprestimo, String NM, String nome, String titulo, int codigolivro, String DTEmprestimo, String DTDevolucao){
+        this.codigoemprestimo = codigoemprestimo;
         this.NumeroMatricula = NM;
         this.nome = nome;
         this.titulo = titulo;
@@ -22,59 +23,66 @@ public class Devolucao extends DadosPrincipais {
         this.DataEmprestimo = DTEmprestimo;
     } 
     
+    public int getCodigoEmprestimo() {
+      return codigoemprestimo;
+    }
+          
+          
+    public void setCodigoEmprestimo(int codigoemprestimo){
+      this.codigoemprestimo = codigoemprestimo;
+    }
     
     
-    
-     public String getNM() {
+    public String getNM() {
 		return NumeroMatricula;
-     }
+    }
         
-     public void setNM(String NM) {
+    public void setNM(String NM) {
 		this.NumeroMatricula = NM;
-     }
+    }
      
-     public String getNome() {
+    public String getNome() {
 		return nome;
-     }
+    }
         
-     public void setNome(String nome) {
+    public void setNome(String nome) {
 		this.nome = nome;
-     }
+    }
     
-     public String getTitulo() {
+    public String getTitulo() {
 		return titulo;
-     }
+    }
 
-     public void setCodigoLivro(int codigolivro) {
+    public void setCodigoLivro(int codigolivro) {
 		this.codigolivro = codigolivro;
-     }
+    }
     
-     public int getCodigoLivro() {
+    public int getCodigoLivro() {
 		return codigolivro;
-     }
+    }
         
-     public void setTitulo(String titulo) {
+    public void setTitulo(String titulo) {
 		this.titulo = titulo;
-     }
+    }
     
-     public String getDTEmprestimo() {
+    public String getDTEmprestimo() {
 		return DataEmprestimo;
-     }
+    }
         
-     public void setDTEmprestimo(String DTEmprestimo) {
+    public void setDTEmprestimo(String DTEmprestimo) {
 		this.DataEmprestimo = DTEmprestimo;
-     }
+    }
     
     
-     public String getDTDevolucao() {
+    public String getDTDevolucao() {
 		return DataDevolucao;
-     }
+    }
         
-     public void setDTDevolucao(String DTDevolucao) {
+    public void setDTDevolucao(String DTDevolucao) {
 		this.DataDevolucao = DTDevolucao;
-     }
+    }
      
-     @Override
+    @Override
 	public boolean equals(Object o) {
 		Devolucao dev = new Devolucao();
 		dev = (Devolucao) o;

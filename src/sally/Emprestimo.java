@@ -23,8 +23,10 @@ public class Emprestimo extends DadosPrincipais  {
         this.DataDevolucao = DTDevolucao;
         this.PosicaoLivro = posicaolivro;
     }
-    
-        public String getNM() {
+	
+	
+	
+    public String getNM() {
 		return NumeroMatricula;
 	}
         
@@ -33,7 +35,7 @@ public class Emprestimo extends DadosPrincipais  {
 		this.NumeroMatricula = NM;
 	}
         
-        public String getNome() {
+    public String getNome() {
 		return nome;
 	}
         
