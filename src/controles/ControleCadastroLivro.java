@@ -35,13 +35,13 @@ public class ControleCadastroLivro extends ControleCadastro{
             LivrosDao livroDao = new LivrosDao();
 
            try{                               
-			//livro.setCodigo(ValidacaoDeCadastro.validaNotNull(jlivro.txtCodigo.getText()));
+
 			 livro.setTitulo(ValidacaoDeCadastro.validaNotNull(jlivro.txtTitulo.getText()));
-             livro.setAutor(ValidacaoDeCadastro.validaNotNull(jlivro.txtAutor.getText()));
+          livro.setAutor(ValidacaoDeCadastro.validaNotNull(jlivro.txtAutor.getText()));
 			 livro.setEdicao(ValidacaoDeCadastro.validaNotNull(jlivro.txtEdicao.getText()));
-             livro.setAno(ValidacaoDeCadastro.validaNotNull(jlivro.txtAno.getText()));
-             livro.setDispo(ValidacaoDeCadastro.validaNotZero(jlivro.txtDispo.getText()));
-             livroDao.add_livro(livro);  
+          livro.setAno(ValidacaoDeCadastro.validaNotNull(jlivro.txtAno.getText()));
+          livro.setDispo(ValidacaoDeCadastro.validaNotZero(jlivro.txtDispo.getText()));
+          livroDao.add_livro(livro);  
            } catch(IllegalArgumentException e){
               JOptionPane.showMessageDialog(null, "É necessário preencher todos os campos");
               jlivro.setVisible(false);

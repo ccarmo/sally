@@ -12,7 +12,7 @@ import excecoes.*;
 
 public class JanelaCadastroLivro extends JFrame  {
  
- public JLabel lblCodigo, lblTitulo, lblAutor, lblEdicao, lblAno, lblDispo;
+ public JLabel lblTitulo, lblAutor, lblEdicao, lblAno, lblDispo;
  public JTextField txtCodigo, txtTitulo, txtAutor, txtEdicao;
  public JFormattedTextField txtAno, txtDispo;
  public JButton btnCadastrar, btnLimpar, btnCancelar;   
@@ -36,10 +36,7 @@ private void iniciarTela(){
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new Color(192,192,192));
 		
-		lblCodigo = new JLabel("Código:"); 
-		lblCodigo.setForeground(new Color(0,0,0));
-		lblCodigo.setBounds(20, 50, 80, 20);
-		add(lblCodigo);
+
 		
 		txtCodigo = new JTextField();
 		txtCodigo.setBounds(120, 50, 450, 20);
