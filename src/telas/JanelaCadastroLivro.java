@@ -36,12 +36,6 @@ private void iniciarTela(){
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new Color(192,192,192));
 		
-
-		
-		txtCodigo = new JTextField();
-		txtCodigo.setBounds(120, 50, 450, 20);
-		add(txtCodigo);
-		
 		lblTitulo = new JLabel("Título:"); 
 		lblTitulo.setForeground(new Color (0,0,0));
 		lblTitulo.setBounds(20, 80, 100, 20);
@@ -63,7 +57,7 @@ private void iniciarTela(){
                 
                 
                 
-                lblAno = new JLabel("Ano:"); 
+        lblAno = new JLabel("Ano:"); 
 		lblAno.setForeground(new Color (0,0,0));
 		lblAno.setBounds(20, 140, 100, 20);
 		add(lblAno);
@@ -84,14 +78,14 @@ private void iniciarTela(){
 		lblAutor.setBounds(20, 170, 100, 20);
 		add(lblAutor);
                 
-                txtAutor = new JTextField();
+        txtAutor = new JTextField();
 		txtAutor.setBounds(120, 170, 150, 20);
 		add(txtAutor);
 		
 		
                 
                 
-                lblDispo = new JLabel("Quant.:"); 
+        lblDispo = new JLabel("Quant.:"); 
 		lblDispo.setForeground(new Color (0,0,0));
 		lblDispo.setBounds(20, 200, 100, 20);
 		add(lblDispo);
@@ -141,12 +135,12 @@ public void iniciarEventos(){
 		btnLimpar.addActionListener(new ActionListener() { //Limpar campos
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				txtCodigo.setText("");
+
 				txtTitulo.setText("");
 				txtDispo.setText("");
-                                txtEdicao.setText("");
-                                txtAno.setText("");
-                                txtDispo.setText("");
+                txtEdicao.setText("");
+                txtAno.setText("");
+                txtDispo.setText("");
 			}
 		});
 		
