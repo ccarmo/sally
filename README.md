@@ -32,8 +32,9 @@ Será necessário a instalação dos seguintes componentes:
 - [x]  Consulta de clientes
 - [x]  Cadastro de livros
 - [x]  Controle de devoluções
-- [ ]  Aplicação de multas
+- [ ]  Controle de multas
 
 ### 4. Telas
 
 ![](tela1.gif)
+![](tela2.gif)
