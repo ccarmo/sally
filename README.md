@@ -1,40 +1,51 @@
-<h1 align="center">  Sally - Sistema de Biblioteca </h1> <h4 align="center"> 🚧 Em construção... 🚧 </h4>
 
+<h1 align="center">  Sally - Sistema de Biblioteca </h1>
 
-
-
-
-
-
-<p align="center">
- <a href="#Pré-requisitos">Pré-requisitos</a> •
- <a href="#Descrição">Descrição</a> • 
- <a href="#Recursos">Recursos</a>  
-</p>
-
-## 1. Descrição
+## 💻 Aplicação
 
 Sistema básico para biblioteca que contempla as suas funções básicas para utilizar em produção
 
-## 2. Pré-requisito
-Será necessário a instalação dos seguintes componentes:
+O software contém:
 
-> [Git 2.29.2.2]((https://git-scm.com/)) • [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) • [pgJDBC 42.2.18]((https://jdbc.postgresql.org/download.html)) 
+* Cadastro de clientes
+* Cadastro de livros 
+* Cadastro de empréstimos
+* Consulta de clientes
+* Cadastro de livros
+* Controle de devoluções
+* Controle de multas
+
+## 🚀 Tecnologias
+
+* Java 11
+
+## Pré-requisito
+
+É necessário a instalação dos seguintes componentes:
+
+> • [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) • [pgJDBC 42.2.18]((https://jdbc.postgresql.org/download.html)) 
 
 É recomendável utilizar o VSCode 1.52 com as seguintes extensões:
 
-> *Project Manager for Java 0.17.0* • *PostgreSQL 1.1.17* • *Java Extension Pack 0.12.1* • *GitHub Pull Resquests and Issues 0.22.0*  
- 
-## 3. Recursos 
-- [x] Cadastro de clientes
-- [x]  Cadastro de livros 
-- [x]  Cadastro de empréstimos
-- [x]  Consulta de clientes
-- [x]  Cadastro de livros
-- [x]  Controle de devoluções
-- [ ]  Controle de multas
+> *Project Manager for Java 0.17.0* • *PostgreSQL 1.1.17* • *Java Extension Pack 0.12.1*  
+
 
 ### 4. Telas
 
 ![](tela1.gif)
 ![](tela2.gif)
+
+## 📝 Licença
+
+Esse projeto está sob a licença MIT. 
+
+## 💻 Equipe de desenvolvimento
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ccarmo"><img style="border-radius: 50%;" src="https://i.ibb.co/YNJwy25/IMG-2427.jpg" width="100px;" alt=""/><br /><sub><b>Carlos Henrique</b></sub></a><br/></td>
+</table>
+
+
+
+
