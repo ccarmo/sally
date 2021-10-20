@@ -18,19 +18,20 @@ O software contém:
 ## 🚀 Tecnologias
 
 * Java 11
+* PostgreSQL
 
 ## Pré-requisito
 
 É necessário a instalação dos seguintes componentes:
 
-> • [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) • [pgJDBC 42.2.18]((https://jdbc.postgresql.org/download.html)) 
+> • PostgreSQL 13 • pgJDBC 42.2.18
 
 É recomendável utilizar o VSCode 1.52 com as seguintes extensões:
 
 > *Project Manager for Java 0.17.0* • *PostgreSQL 1.1.17* • *Java Extension Pack 0.12.1*  
 
 
-### 4. Telas
+### Telas
 
 ![](tela1.gif)
 ![](tela2.gif)
